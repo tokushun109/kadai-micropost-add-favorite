@@ -1,4 +1,4 @@
-<% if model.errors.any %>
+<% if model.errors.any? %>
     <div id="error_explanation" class="alart alart-warning">
         <ul class="mb-0">
             <% model.errors.full_messages.each do |message| %>
