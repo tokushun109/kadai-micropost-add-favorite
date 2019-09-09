@@ -51,13 +51,10 @@ class User < ApplicationRecord
     end
         
     def favorite(fav_micropost)
-    # お気に入りしようとするユーザーとお気に入りされる投稿をもつユーザーが違う場合
-        unless self == fav_micropost.user
     # お気に入りの中から、
     # ①すでにお気に入りしているユーザーがある場合、そのお気に入りインスタンスを返す
     # ②お気に入りしているユーザーがない場合、新たにお気に入りインスタンスをさ作成し、セーブする
         self.favorites.find_or_create_by(micropost_id: fav_micropost.id)
-        end
     end  
     
     # ユーザーがもつお気に入りの中から、

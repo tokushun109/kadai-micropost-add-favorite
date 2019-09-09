@@ -9,14 +9,14 @@
         <div>
           <p class="mb-0"><%= micropost.content %></p>
         </div>
-        <div>
+          <ul class="list-inline">
+            <li class="list-inline-item">
               <% if current_user == micropost.user %>
                 <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
               <% end %>
-            </div>
+            </li>
             <!-- ここにボタンお気に入りボタンを表示-->
-            <div>
-          <% unless current_user == micropost.user %>
+            <li  class="list-inline-item">
             <% if current_user.favorite?(micropost) %>
               <%= form_with(model: current_user.favorites.find_by(micropost_id: micropost.id), local: true, method: :delete) do |f| %>
                 <%= hidden_field_tag :micropost_id, micropost.id %>
@@ -28,8 +28,8 @@
                 <%= f.submit 'Favorite' , class: 'btn btn-primary btn-sm'%>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
+            </li>
+          </ul>
       </div>
     </li>
   <% end %>

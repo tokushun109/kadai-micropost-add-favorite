@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :require_user_logged_in
   
   def create
-    # viewからお気に入りしたいを投稿のmicropost_idを送ってもらう
+    # viewからお気に入りしたい投稿のmicropost_idを送ってもらう
     micropost = Micropost.find(params[:micropost_id])
     current_user.favorite(micropost)
     flash[:success] = 'お気に入り登録しました'
