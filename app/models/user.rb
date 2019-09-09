@@ -23,14 +23,14 @@ class User < ApplicationRecord
     def follow(other_user)
         # ①other_userは自分ではない
         # selfはメソッドを使用するuser自身
-        # unless self == other_user
+        unless self == other_user
         
         # ②すでにフォローをしているか
         # メソッドを行うユーザー自身のid(user_id)が含まれるリレーションの中から、
         # follow_idにother_userのidが含まれているものがあるかを探す。
         # createは(build+save)
             self.relationships.find_or_create_by(follow_id: other_user.id)
-        # end
+        end
     end
     def unfollow(other_user)
         # ①すでにフォローしているか
